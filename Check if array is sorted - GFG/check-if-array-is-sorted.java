@@ -28,16 +28,12 @@ public class Main {
 //User function Template for Java
 
 class Solution {
-    boolean arraySortedOrNot(int[] arr, int n) {
+    boolean arraySortedOrNot(int[] arr, int size) {
        
-       for(int i = 0;i<n-1;i++){
-           int current = arr[i];
-           int next = arr[i+1];
-           
-           if(current > next) return false;
-           
-       }
+       if(size == 0 || size == 1) return true;
        
-       return true;
+       boolean isSorted = arraySortedOrNot(arr,size-1);
+       
+       return (isSorted && arr[size-1] >= arr[size-2]);
     }
 }
