@@ -11,7 +11,7 @@ class Solution {
         }
         
         public int compareTo(Point p){
-            return this.distance - p.distance;
+            return p.distance - this.distance;
         }
         
     }
@@ -20,7 +20,7 @@ class Solution {
         int[][] result = new int[k][2];
         if(points.length == 0 || k > points.length) return result;
         
-        PriorityQueue<Point> pq = new PriorityQueue<>(Collections.reverseOrder());
+        PriorityQueue<Point> pq = new PriorityQueue<>();
         
         for(int i = 0;i<k;i++){
             
