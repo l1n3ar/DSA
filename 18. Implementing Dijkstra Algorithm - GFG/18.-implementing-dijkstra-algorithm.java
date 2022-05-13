@@ -85,6 +85,7 @@ class Solution
             if(visited[current.vertex]) continue;
             
             visited[current.vertex] = true;
+            result[current.vertex] = current.distance;
             
             ArrayList<ArrayList<Integer>> graph = adj.get(current.vertex);
             
@@ -100,7 +101,7 @@ class Solution
                 
             }
             
-            result[current.vertex] = current.distance;
+           
             
         }
         
