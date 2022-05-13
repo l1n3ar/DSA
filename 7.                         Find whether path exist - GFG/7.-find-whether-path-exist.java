@@ -60,14 +60,14 @@ class Solution
         
         visited[row][col] = true;
         
-         boolean down = dfs(row+1,col,graph,visited);
-         if(down) return true;
-         boolean up = dfs(row-1,col,graph,visited);
-         if(up) return true;
-         boolean right = dfs(row,col+1,graph,visited);
-         if(right) return true;
-         boolean left = dfs(row,col-1,graph,visited);
-         if(left) return true;
+       if (dfs(row+1,col,graph,visited)) return true;
+       
+       if (dfs(row-1,col,graph,visited)) return true;
+  
+        if (dfs(row,col+1,graph,visited)) return true;
+
+       if (dfs(row,col-1,graph,visited)) return true;
+  
         
         
         // visited[row][col] = false;
