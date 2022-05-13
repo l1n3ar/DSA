@@ -56,7 +56,7 @@ class Solution {
         visited[src] = true;
         
         for(int nbr : graph.get(src)){
-           dfs(nbr,dest, graph,visited);
+           if(!visited[nbr]) dfs(nbr,dest, graph,visited);
         }
         
         visited[src] = false;
