@@ -66,19 +66,14 @@ class Solution
             list.add(new Activity(start[i],end[i]));
         }
         Collections.sort(list);
-        // for(int i=0;i<n;i++)
-        // {
-        //     System.out.println(list.get(i));
-        // }
-        int res=0;
-        res+=1;
-        int temp=0;
+        int res = 1;
+        int previous=0;
         for(int i=1;i<n;i++)
         {
-            if(list.get(i).start > list.get(temp).end)
+            if(list.get(i).start > list.get(previous).end)
             {
                 res+=1;
-                temp=i;
+                previous=i;
             }
         }
         return res;
