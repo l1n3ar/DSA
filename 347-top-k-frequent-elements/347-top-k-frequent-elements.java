@@ -31,7 +31,7 @@ class Solution {
         int[] res = new int[k];
         int index = 0;
         
-        while(index < k){
+        while(index < k && !pq.isEmpty()){
             Pair current = pq.poll();
             res[index] = current.val;
             index++;
