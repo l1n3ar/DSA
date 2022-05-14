@@ -8,14 +8,10 @@ class Solution {
         
         for(int i = 1;i<nums.length;i++){
             
-            
-            current = Math.max(current + nums[i], nums[i]);
-            max = Math.max(current, max);
-            
-           
-            
-            
-            
+          current = Math.max(current + nums[i], nums[i]);
+          max = Math.max(current,max);
+       
+        
         }
         
         
