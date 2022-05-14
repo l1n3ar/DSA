@@ -67,13 +67,14 @@ class Solution
         }
         Collections.sort(list);
         int res = 1;
-        int previous=0;
+        Activity previous = list.get(0);
         for(int i=1;i<n;i++)
         {
-            if(list.get(i).start > list.get(previous).end)
+            Activity current = list.get(i);
+            if(current.start > previous.end)
             {
                 res+=1;
-                previous=i;
+                previous=current;
             }
         }
         return res;
