@@ -49,22 +49,7 @@ class Activity implements Comparable<Activity>
         }
         public int compareTo(Activity a)
         {
-            if(end==a.end)
-            {
-                return 0;
-            }
-            else if(end>a.end)
-            {
-                return 1;
-            }
-            else
-            {
-                return -1;
-            }
-        }
-        public String toString()
-        {
-            return ("["+start+"],"+"["+end+"]");
+            return (this.end - a.end);
         }
         
     }
