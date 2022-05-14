@@ -73,7 +73,7 @@ class Solution
             Meeting current = a.get(i);
             
             if(current.start > previous.end){
-                res+=1;
+                res++;
                 previous = current;
             }
         }
