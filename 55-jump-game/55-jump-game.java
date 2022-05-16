@@ -1,22 +1,24 @@
 class Solution {
     public boolean canJump(int[] nums) {
         
-        if(nums.length == 0) return true;
+        int n = nums.length;
+        boolean[] can = new boolean[n];
         
-        int goal = nums.length - 1;
+        can[n-1] = true;
         
-        for(int i = nums.length - 2;i>=0;i--){
-            
-            int current = nums[i];
+        for(int i = n-2;i>=0;i--){
+            int maxJumpFromCurrentIndex = nums[i];
             int currentIndex = i;
             
-          if(currentIndex + current >= goal) goal = currentIndex;
+            if(currentIndex + maxJumpFromCurrentIndex >= n-1) can[currentIndex] = true;
+            else{
+                for(int j = currentIndex + 1;j<=currentIndex + maxJumpFromCurrentIndex;j++){
+                    if(can[j]) can[currentIndex] = true;
+                }
+            }
         }
         
-        
-        
-        
-        return goal == 0;
+        return can[0];
         
     }
 }
