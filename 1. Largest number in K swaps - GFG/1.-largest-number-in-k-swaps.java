@@ -58,13 +58,14 @@ public static void findNum(char [] arr, int k) {
        }
        
        findNum(arr, k-1);
-      }
-      
-      if(a<b) {
-       char tmp = arr[i];
+   
+        tmp = arr[i];
        arr[i] = arr[j];
        arr[j] = tmp;
+      
       }
+      
+     
      }
     }
 }
