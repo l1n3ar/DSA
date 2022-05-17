@@ -10,22 +10,19 @@ class Solution {
         
          return res;
         
-}
+    }
         
     
     public static void findSubsets(int[] arr, int currentIndex, ArrayList<Integer> current, List<List<Integer>> res){
         
     
-        if(currentIndex == arr.length){
-            res.add(new ArrayList<>(current));
-            return;
-        }
+        if(!res.contains(current)) res.add(current);
+        if(currentIndex == arr.length) return;
         
-        
-        current.add(arr[currentIndex]);
-        findSubsets(arr, currentIndex + 1, current,res);
-        current.remove(current.size() - 1);
+        ArrayList<Integer> temp = new ArrayList<>(current);
+        temp.add(arr[currentIndex]);
         findSubsets(arr,currentIndex+1,current,res);
+        findSubsets(arr,currentIndex+1,temp,res);
         
     }
 }
