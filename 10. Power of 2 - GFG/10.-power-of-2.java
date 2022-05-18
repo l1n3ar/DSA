@@ -37,9 +37,6 @@ class Solution{
     public static boolean isPowerofTwo(long n){
         
         // Your code here
-        if(n == 1) return true;
-        if((n&1) == 1) return false;
-        
         int count = 0;
         
         while(n!=0){
