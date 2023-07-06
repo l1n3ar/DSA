@@ -1,15 +1,18 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        elements = {}
-        length = len(nums)
-        for i in range(len(nums)):
+        current_max = nums[0]
+        count = 1
+        for i in range(1,len(nums)):
+            print("Current Max : ",current_max)
             current = nums[i]
-            if current in elements:
-                elements[current]+=1
+            if current == current_max:
+                count+=1
             else:
-                elements[current]=1
-        print(elements)
-        for element in elements:
-            if (elements[element]>length/2):
-                return element
+                count-=1
+            if count==0:
+                current_max = current
+                count=1
+        
+        if count>0:
+            return current_max
         return 0
