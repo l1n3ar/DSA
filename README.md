@@ -1,3 +1,3 @@
-DSA Solutions from LeetCode and GeeksForGeeks.
+DSA Solutions from LeetCode
 
 
