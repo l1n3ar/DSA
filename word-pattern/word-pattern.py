@@ -17,6 +17,4 @@ class Solution:
 
             letter_to_word[letter] = words[index]
 
-        print(letter_to_word)
-
         return True
