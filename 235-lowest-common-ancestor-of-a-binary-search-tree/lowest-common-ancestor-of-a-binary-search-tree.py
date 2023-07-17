@@ -8,18 +8,31 @@
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
 
-        def lca(node,p,q):
+        path1,path2 = [],[]
 
-            if not node : return None
-            if node.val == p.val or node.val == q.val : return node
+        def lca(node,target,path):
 
-            left = lca(node.left,p,q)
-            right = lca(node.right,p,q)
+            if node is None : return False
 
-            if left and right : return node
+            path.append(node)
+            if node.val == target.val : return True
 
-            return left if left is not None else right
-            
+            if lca(node.left,target,path) or lca(node.right,target,path) : return True
+
+            path.pop()
+            return False
         
-        return lca(root,p,q)
+        p1 = lca(root,p,path1)
+        p2 = lca(root,q,path2)
+        
+        if not p1 or not p2:
+            return None
+        
+        i = 0
+        while (i < len(path1) and i < len(path2)):
+            if path1[i] != path2[i]:
+                break
+            i+=1
+        
+        return path1[i-1]
         
