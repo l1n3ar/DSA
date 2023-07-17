@@ -26,8 +26,8 @@ class Solution:
             for i in range(len(q)):    
                 current = q.pop(0)
 
-                if current.node.left : q.append(Pair(node = current.node.left,index = 2 * current.index))
-                if current.node.right : q.append(Pair(node = current.node.right,index = (2 * current.index) + 1))
+                if current.node.left : q.append(Pair(node = current.node.left,index = (2 * current.index) + 1))
+                if current.node.right : q.append(Pair(node = current.node.right,index = (2 * current.index) + 2))
         
         return max_
             
