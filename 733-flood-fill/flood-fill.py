@@ -9,8 +9,6 @@ class Solution:
         curr = image[sr][sc]
 
         def dfs(r,c):
-
-            if r < 0 or c < 0 or r >= rows or c >= cols or image[r][c] == color or image[r][c] != curr : return
            
             image[r][c] = color
 
@@ -18,6 +16,8 @@ class Solution:
                 
                 rr = r + dr[i]
                 cc = c + dc[i]
+
+                if rr < 0 or cc < 0 or rr >= rows or cc >= cols or image[rr][cc] == color or image[rr][cc] != curr : continue
 
                 dfs(rr,cc)
         
