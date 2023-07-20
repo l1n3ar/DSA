@@ -10,17 +10,14 @@ class Solution:
 
         def dfs(r,c):
 
-            if image[r][c] == color : return
-
+            if r < 0 or c < 0 or r >= rows or c >= cols or image[r][c] == color or image[r][c] != curr : return
+           
             image[r][c] = color
 
             for i in range(4):
                 
                 rr = r + dr[i]
                 cc = c + dc[i]
-
-                if cc < 0 or rr < 0 or rr >= rows or cc >= cols : continue
-                if image[rr][cc] != curr : continue
 
                 dfs(rr,cc)
         
