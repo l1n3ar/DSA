@@ -17,7 +17,7 @@ class Solution:
             q.append(Pair(vertex=src, level=1))
 
             while q:
-                print(q[0].vertex,q[0].level)
+               
 
                 vertex = q.popleft()
 
@@ -36,7 +36,7 @@ class Solution:
         for i in range(len(graph)):
             if visited[i] == 0:
                 oddCycle = findOddCycle(graph, i)
-                print(oddCycle)
+  
                 if oddCycle:
                     return False
 
