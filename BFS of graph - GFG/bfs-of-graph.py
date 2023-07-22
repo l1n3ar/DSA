@@ -2,41 +2,37 @@
 
 from typing import List
 from queue import Queue
-from collections import deque
 
+from collections import deque
 class Solution:
     #Function to return Breadth First Traversal of given graph.
     def bfsOfGraph(self, V: int, adj: List[List[int]]) -> List[int]:
         # code here
         
-        
-        if not adj : return []
-        
-        q = deque()
-        res = []
         visited = [False] * V
+        res = []
+        q = deque()
         
-        
-        def travel(graph,src):
+        def bfs(graph,vertex):
             
-            visited[src] = True
-            q.append(src)
+            q.append(vertex)
             
             while q:
                 
-                vertex = q.popleft()
-                res.append(vertex)
+                current_vertex = q.popleft()
+                if visited[current_vertex] : continue
                 
-                for nbr in graph[vertex]:
-                    if not visited[nbr] : 
-                        q.append(nbr)
-                        visited[nbr] = True
-        
-
-        travel(adj,0)
+                visited[current_vertex] = True
+                res.append(current_vertex)
+                
+                for nbr in graph[current_vertex]:
+                    q.append(nbr)
         
         
+        
+        bfs(adj,0)
         return res
+
 
 #{ 
  # Driver Code Starts
