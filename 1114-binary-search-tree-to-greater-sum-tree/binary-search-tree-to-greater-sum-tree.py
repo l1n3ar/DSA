@@ -6,34 +6,25 @@
 #         self.right = right
 class Solution:
     def bstToGst(self, root: TreeNode) -> TreeNode:
+       current_sum = 0
+       if not root : return root
 
-        # find sum of tree
-        # do inorder
-        #keep track of current sum
-        # total sum + current key - current sum
+       def reverse_inorder(node):
+           nonlocal current_sum
+
+           if not node : return
+
+           reverse_inorder(node.right)
+
+           current_sum+=node.val
+           node.val = current_sum
+
+           reverse_inorder(node.left)
+
+
+       reverse_inorder(root) 
+
+
+
+       return root
         
-        def sum(node):
-
-            if not node : return 0
-
-            return node.val + sum(node.left) + sum(node.right)
-
-        
-        total_sum = sum(root)
-        current_sum = 0
-
-        def inorder(node):
-            nonlocal current_sum
-            nonlocal total_sum
-
-            if not node : return
-
-            inorder(node.left)
-            current_sum+=node.val
-            node.val = (total_sum + node.val) - current_sum
-            inorder(node.right)
-        
-
-        inorder(root)
-
-        return root
