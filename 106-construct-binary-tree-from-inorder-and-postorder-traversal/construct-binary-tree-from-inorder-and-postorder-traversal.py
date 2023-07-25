@@ -7,32 +7,36 @@
 class Solution:
     def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
 
+        p_index = len(postorder) - 1
+        mp = {}
 
+        for i,v in enumerate(inorder):
 
-        index = len(postorder) - 1
+            mp[v] = i
+        
 
-        def build(po,io,isi,iei):
-            nonlocal index
-            idx = 0
+        def build(p,i,isi,iei):
+            nonlocal p_index
 
             if isi > iei : return None
 
-            node = TreeNode(val = po[index])
-            index-=1
+            node =  TreeNode(val = p[p_index])
+            p_index-=1
 
             if isi == iei : return node
 
-            for i in range(isi,iei+1):
-                if io[i] == node.val:
-                    idx = i
-                    break
+            i_index = mp[node.val]
 
-            node.right = build(po,io,idx+1,iei)
-            node.left = build(po,io,isi,idx - 1)
-         
+            node.right = build(p,i,i_index + 1,iei)
+            node.left = build(p,i,isi,i_index - 1)
+            
 
             return node
-        
+
+
+
+
 
 
         return build(postorder,inorder,0,len(postorder) - 1)
+        
