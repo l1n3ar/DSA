@@ -7,30 +7,34 @@
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
 
-        index = 0
+        p_idx = 0
+        mp = {}
 
-        def build(pre,io,isi,iei):
+        for i,v in enumerate(inorder):
+            mp[v] = i
 
-            nonlocal index
+        def build(po,io,isi,iei):
+
+            nonlocal p_idx
 
             if isi > iei : return None
 
-            node = TreeNode(val = pre[index])
-            index+=1
+            node = TreeNode(val = po[p_idx])
+            p_idx+=1
 
-            if isi == iei : return node
-
-            for i in range(isi,iei+1):
-                if io[i] == node.val:
-                    idx = i
-                    break
+            if iei == isi : return node
             
-            node.left = build(pre,io,isi,idx - 1)
-            node.right = build(pre,io,idx+1,iei)
+            idx = mp[node.val]
 
+            node.left = build(po,io,isi,idx - 1)
+            node.right = build(po,io,idx + 1,iei)
 
             return node
+
+
+
         
 
 
         return build(preorder,inorder,0,len(inorder) - 1)
+        
