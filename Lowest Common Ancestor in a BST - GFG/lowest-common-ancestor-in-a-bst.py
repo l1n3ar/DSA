@@ -11,8 +11,6 @@ def LCA(root, n1, n2):
     def lca(node,p,q):
         
         if node is None : return node
-         
-        if node.data == p or node.data == q : return node
         
         if p < node.data and q < node.data : return lca(node.left,p,q)
         elif p > node.data and q > node.data : return lca(node.right,p,q)
